@@ -1,4 +1,4 @@
-package ru.kata;
+package ru.kata.service;
 
 import ru.kata.model.User;
 import ru.kata.repository.UserRepository;
@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired
-    private UserRepository repo;
+    protected UserRepository repo;
     public List<User> listAll() {
         return repo.listUser();
     }

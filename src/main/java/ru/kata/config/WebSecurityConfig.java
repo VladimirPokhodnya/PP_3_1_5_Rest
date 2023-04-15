@@ -14,11 +14,20 @@ import ru.kata.UserDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    private final SuccessUserHandler successUserHandler;
+
+    public WebSecurityConfig(SuccessUserHandler successUserHandler) {
+        this.successUserHandler = successUserHandler;
+    }
 
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl();
     }
+
+    //User defined post login processing class
+//    @Autowired
+//    private LoginSuccessHandler loginSuccessHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -50,7 +59,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/delete/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll()
+                .formLogin()
+                .successHandler(successUserHandler)
+                .permitAll()
                 .and()
                 .logout().permitAll()
                 .and()

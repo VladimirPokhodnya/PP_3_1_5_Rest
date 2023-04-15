@@ -2,7 +2,7 @@ package ru.kata.controller;
 
 import java.util.List;
 
-import ru.kata.UserService;
+import ru.kata.service.UserService;
 import ru.kata.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
