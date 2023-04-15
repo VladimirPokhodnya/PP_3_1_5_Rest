@@ -33,7 +33,7 @@ public class AppController {
         return "admin";
     }
 
-    @RequestMapping("/admin/add")
+    @RequestMapping("/add")
     public String showNewUserForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
