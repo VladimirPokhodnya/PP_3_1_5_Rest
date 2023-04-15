@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired
-    protected UserRepository repo;
+    private UserRepository repo;
     public List<User> listAll() {
         return repo.listUser();
     }

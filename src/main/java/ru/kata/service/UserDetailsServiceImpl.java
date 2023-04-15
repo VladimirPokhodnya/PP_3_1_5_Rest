@@ -1,4 +1,4 @@
-package ru.kata;
+package ru.kata.service;
 
 import ru.kata.model.User;
 import ru.kata.repository.UserRepository;

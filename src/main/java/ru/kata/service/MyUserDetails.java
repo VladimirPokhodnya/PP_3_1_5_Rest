@@ -1,4 +1,4 @@
-package ru.kata;
+package ru.kata.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
