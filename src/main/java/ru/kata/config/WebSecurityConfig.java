@@ -25,10 +25,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new UserDetailsServiceImpl();
     }
 
-    //User defined post login processing class
-//    @Autowired
-//    private LoginSuccessHandler loginSuccessHandler;
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
