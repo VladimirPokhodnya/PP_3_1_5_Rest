@@ -19,15 +19,21 @@ public class AppController {
         this.userService = userService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/user")
     public String viewUser(Model model) {
+
+        return "user";
+    }
+
+    @RequestMapping("/admin")
+    public String viewAdmin(Model model) {
         List<User> listUsers = userService.listAll();
         model.addAttribute("listUsers", listUsers);
 
         return "admin";
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/admin/add")
     public String showNewUserForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
@@ -39,7 +45,7 @@ public class AppController {
     public String saveUser(@ModelAttribute("user") User user) {
         userService.save(user);
 
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @RequestMapping("/edit/{id}")
@@ -54,12 +60,12 @@ public class AppController {
     public String deleteUser(@PathVariable(name = "id") Long id) {
         userService.delete(id);
 
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @RequestMapping("/user-update")
     public String updateUser(User user){
         userService.save(user);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 }

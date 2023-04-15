@@ -30,3 +30,5 @@ INSERT INTO `users_roles` (`user_id`, `role_id`)
 VALUES (4, 3); -- user namhm has role EDITOR
 INSERT INTO `users_roles` (`user_id`, `role_id`)
 VALUES (5, 4); -- user admin has role ADMIN
+INSERT INTO `users_roles` (`user_id`, `role_id`)
+VALUES (5, 1); -- user admin has role ADMIN
