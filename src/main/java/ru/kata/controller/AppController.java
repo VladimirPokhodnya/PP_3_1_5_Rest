@@ -1,16 +1,17 @@
 package ru.kata.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import org.springframework.web.bind.annotation.*;
+import ru.kata.model.Role;
 import ru.kata.service.RoleService;
 import ru.kata.service.UserService;
 import ru.kata.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AppController {
@@ -45,7 +46,13 @@ public class AppController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute("user") User user) {
+    public String saveUser(@ModelAttribute("user") User user, @RequestParam ArrayList<String> listRoleId) {
+        Set<Role> userRole = new HashSet<>();
+        for (String roleId : listRoleId) {
+            Role role = roleService.get(Integer.parseInt(roleId));
+            userRole.add(role);
+        }
+        user.setRoles(userRole);
         userService.save(user);
 
         return "redirect:/admin";

@@ -1,5 +1,6 @@
 package ru.kata.model;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
@@ -25,7 +26,7 @@ public class User {
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	@Column(name="username", unique=true)
 	private String username;
 	private String password;
 	private boolean enabled;
