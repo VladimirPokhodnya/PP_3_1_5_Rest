@@ -76,7 +76,13 @@ public class AppController {
     }
 
     @RequestMapping("/user-update")
-    public String updateUser(User user) {
+    public String updateUser(@ModelAttribute("user") User user, @RequestParam ArrayList<String> listRoleId) {
+        Set<Role> userRole = user.getRoles();
+        for (String roleId : listRoleId) {
+            Role role = roleService.get(Integer.parseInt(roleId));
+            userRole.add(role);
+        }
+        user.setRoles(userRole);
         userService.save(user);
         return "redirect:/admin";
     }
