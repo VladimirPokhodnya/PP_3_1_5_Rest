@@ -30,8 +30,9 @@
 				<th>User Name</th>
 				<th>Password</th>
 				<th>Enabled</th>
+				<th>Roles</th>
 				
-				<th sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">Actions</th>				
+				<th sec:authorize="hasAuthority('ADMIN')">Actions</th>
 				
 			</tr>
 		</thead>
@@ -41,6 +42,7 @@
 				<td th:text="${user.username}">User Name</td>
 				<td th:text="${user.password}">Password</td>
 				<td th:text="${user.enabled}">Enabled</td>
+				<td th:text="${user.roles}">Roles</td>
 				
 				<td sec:authorize="hasAuthority('ADMIN')">
 					<a th:href="@{'/edit/' + ${user.id}}">Edit</a>

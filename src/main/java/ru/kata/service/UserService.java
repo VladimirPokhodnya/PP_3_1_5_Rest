@@ -2,15 +2,18 @@ package ru.kata.service;
 
 import ru.kata.model.User;
 import ru.kata.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserService {
-    @Autowired
-    private UserRepository repo;
+    private final UserRepository repo;
+
+    public UserService(UserRepository repo, RoleService roleService) {
+        this.repo = repo;
+    }
+
     public List<User> listAll() {
         return repo.listUser();
     }

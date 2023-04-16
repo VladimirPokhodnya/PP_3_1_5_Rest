@@ -2,6 +2,7 @@ package ru.kata.controller;
 
 import java.util.List;
 
+import ru.kata.service.RoleService;
 import ru.kata.service.UserService;
 import ru.kata.model.User;
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AppController {
     private final UserService userService;
+    private final RoleService roleService;
 
-    public AppController(UserService userService) {
+    public AppController(UserService userService, RoleService roleService1) {
         this.userService = userService;
+        this.roleService = roleService1;
     }
 
     @RequestMapping("/user")
@@ -64,7 +67,7 @@ public class AppController {
     }
 
     @RequestMapping("/user-update")
-    public String updateUser(User user){
+    public String updateUser(User user) {
         userService.save(user);
         return "redirect:/admin";
     }
