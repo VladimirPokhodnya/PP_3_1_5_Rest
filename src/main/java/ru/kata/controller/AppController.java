@@ -18,9 +18,9 @@ public class AppController {
     private final UserService userService;
     private final RoleService roleService;
 
-    public AppController(UserService userService, RoleService roleService1) {
+    public AppController(UserService userService, RoleService roleService) {
         this.userService = userService;
-        this.roleService = roleService1;
+        this.roleService = roleService;
     }
 
     @RequestMapping("/user")
@@ -68,6 +68,8 @@ public class AppController {
 
     @RequestMapping("/delete/{id}")
     public String deleteUser(@PathVariable(name = "id") Long id) {
+        User user = userService.get(id);
+        user.setRoles(new HashSet<>());
         userService.delete(id);
 
         return "redirect:/admin";
