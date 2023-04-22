@@ -11,7 +11,7 @@ public class Role implements GrantedAuthority {
     @Id
     @Column(name = "role_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String name;
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
@@ -24,11 +24,11 @@ public class Role implements GrantedAuthority {
         this.users = users;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

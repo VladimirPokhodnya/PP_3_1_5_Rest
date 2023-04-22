@@ -18,9 +18,10 @@ import java.util.List;
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {
-    private UserJpaRepository userJpaRepository;
-    private RoleJpaRepository roleJpaRepository;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserJpaRepository userJpaRepository;
+    private final RoleJpaRepository roleJpaRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Autowired
     public UserServiceImpl(UserJpaRepository userJpaRepository, RoleJpaRepository roleJpaRepository,
                            BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -28,6 +29,7 @@ public class UserServiceImpl implements UserService {
         this.roleJpaRepository = roleJpaRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userJpaRepository.findByName(username);
@@ -36,6 +38,16 @@ public class UserServiceImpl implements UserService {
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(), user.getAuthorities());
+    }
+
+    @Override
+    public List<User> listAll() {
+        return userJpaRepository.listUser();
+    }
+
+    @Override
+    public void save(User user) {
+        userJpaRepository.save(user);
     }
 
     @Override
@@ -78,4 +90,10 @@ public class UserServiceImpl implements UserService {
     public List<Role> getAllRoles() {
         return roleJpaRepository.findAll();
     }
+
+    @Override
+    public User get(Long id) {
+        return userJpaRepository.findById(id).get();
+    }
+
 }

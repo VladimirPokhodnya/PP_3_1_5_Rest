@@ -5,8 +5,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ru.kata.model.User;
 
+import java.util.List;
+
 @Repository
 public interface UserJpaRepository extends JpaRepository<User, Long> {
     @Query("select u from User u left join fetch u.roles where u.username=:username")
     User findByName(String username);
+
+    @Query("From User")
+    List<User> listUser();
+
 }
