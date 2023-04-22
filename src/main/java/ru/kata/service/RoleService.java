@@ -8,4 +8,8 @@ public interface RoleService {
     List<Role> listAll();
 
     public Role get(Long id);
+
+    void save(Role role);
+
+    public void delete(Long id);
 }

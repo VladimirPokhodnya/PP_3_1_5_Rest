@@ -15,7 +15,6 @@ import ru.kata.repository.UserJpaRepository;
 
 import java.util.List;
 
-@Transactional
 @Service
 public class UserServiceImpl implements UserService {
     private final UserJpaRepository userJpaRepository;
@@ -45,6 +44,7 @@ public class UserServiceImpl implements UserService {
         return userJpaRepository.listUser();
     }
 
+    @Transactional
     @Override
     public void save(User user) {
         userJpaRepository.save(user);
@@ -55,18 +55,21 @@ public class UserServiceImpl implements UserService {
         return userJpaRepository.findAll();
     }
 
+    @Transactional
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userJpaRepository.save(user);
     }
 
+    @Transactional
     @Override
     public void updateUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userJpaRepository.save(user);
     }
 
+    @Transactional
     @Override
     public void delete(Long id) {
         User user = userJpaRepository.findById(id).get();

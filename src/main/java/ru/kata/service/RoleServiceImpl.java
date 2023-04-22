@@ -1,6 +1,7 @@
 package ru.kata.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kata.model.Role;
 import ru.kata.model.User;
 import ru.kata.repository.RoleJpaRepository;
@@ -25,16 +26,16 @@ public class RoleServiceImpl implements RoleService {
         return repo.findById(id).get();
     }
 
-//    public void save(Role role) {
-//        repo.save(role);
-//    }
-//
-//    public Role get(Integer id) {
-//        return repo.findById(id.longValue()).get();
-//    }
-//
-//    public void delete(Integer id) {
-//        repo.deleteById(id.longValue());
-//    }
+    @Transactional
+    @Override
+    public void save(Role role) {
+        repo.save(role);
+    }
+
+    @Transactional
+    @Override
+    public void delete(Long id) {
+        repo.deleteById(id);
+    }
 
 }
