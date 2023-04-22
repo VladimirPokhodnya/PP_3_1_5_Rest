@@ -1,32 +1,24 @@
 package ru.kata.service;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
+import ru.kata.model.Role;
 import ru.kata.model.User;
-import ru.kata.repository.UserRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class UserService {
-    private final UserRepository repo;
+public interface UserService extends UserDetailsService {
 
-    public UserService(UserRepository repo) {
-        this.repo = repo;
-    }
+    List<User> getAllUsers();
 
-    public List<User> listAll() {
-        return repo.listUser();
-    }
+    void saveUser(User user);
 
-    public void save(User user) {
-        repo.save(user);
-    }
+    void delete(Long id);
 
-    public User get(Long id) {
-        return repo.findById(id).get();
-    }
+    User getById(Long id);
 
-    public void delete(Long id) {
-        repo.deleteById(id);
-    }
+    void updateUser(User user);
+
+    User getAuthUser();
+
+    List<Role> getAllRoles();
 }
