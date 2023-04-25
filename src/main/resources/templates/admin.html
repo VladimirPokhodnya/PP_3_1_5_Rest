@@ -52,7 +52,7 @@
                 <form th:method="DELETE" th:action="@{delete/{id}(id=${user.id})}" target="_self">
                     <button>Delete</button>
                 </form>
-                <a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/delete/' + ${user.id}}">Delete</a>
+<!--                <a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/delete/' + ${user.id}}">Delete</a>-->
             </td>
         </tr>
         </tbody>
