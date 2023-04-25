@@ -56,41 +56,18 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping(value = "/save")
-    public String saveUser(@ModelAttribute("user") User user, @RequestParam ArrayList<String> listRoleId) {
-        Set<Role> userRole = new HashSet<>();
-        for (String roleId : listRoleId) {
-            Role role = roleService.get(Long.getLong(roleId));
-            userRole.add(role);
-        }
-        user.setRoles(userRole);
-        userService.save(user);
-
-        return "redirect:/admin";
-    }
-
     @GetMapping("/edit/{id}")
     public String showEditUserForm(@PathVariable(name = "id") Long id, Model model) {
         User user = userService.get(id);
+        if (user == null) {
+            return "redirect:/admin";
+        }
         model.addAttribute("user", user);
 
         return "edit_user";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String deleteUser(@PathVariable(name = "id") Long id) {
-        User user = userService.get(id);
-        user.setRoles(new HashSet<>());
-        userService.delete(id);
-
-        return "redirect:/admin";
-    }
-
-
-
-
-
-    @PostMapping("/user-update")
+    @PatchMapping("/edit/{id}")
     public String updateUser(@ModelAttribute("user") User user, @RequestParam ArrayList<String> listRoleId) {
         Set<Role> userRole = user.getRoles();
         for (String roleId : listRoleId) {
@@ -101,4 +78,15 @@ public class AdminController {
         userService.save(user);
         return "redirect:/admin";
     }
+
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteUser(@PathVariable(name = "id") Long id) {
+        User user = userService.get(id);
+        user.setRoles(new HashSet<>());
+        userService.delete(id);
+
+        return "redirect:/admin";
+    }
+
 }
