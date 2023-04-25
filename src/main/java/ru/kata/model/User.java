@@ -30,16 +30,20 @@ public class User implements UserDetails {
     private Long id;
     @Column(name = "username", unique = true)
     private String username;
+    private String firstname;
+    private String lastname;
+    private Byte age;
     private String password;
-    private boolean enabled;
 
     public User() {
     }
 
-    public User(String username, String password, boolean enabled, Set<Role> roles) {
+    public User(String username, String password, String firstname, String lastname, Byte age, Set<Role> roles) {
         this.username = username;
         this.password = password;
-        this.enabled = enabled;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
         this.roles = roles;
     }
 
@@ -104,10 +108,6 @@ public class User implements UserDetails {
         return true;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
     public Set<Role> getRoles() {
         return roles;
     }
@@ -122,5 +122,29 @@ public class User implements UserDetails {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public Byte getAge() {
+        return age;
+    }
+
+    public void setAge(Byte age) {
+        this.age = age;
     }
 }

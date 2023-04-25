@@ -3,21 +3,21 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Admin</title>
+    <title>Admin panel</title>
 </head>
 <body>
 <div align="center">
     <div sec:authorize="isAuthenticated()">
-        Welcome <b><span sec:authentication="name">Username</span></b>
-        &nbsp;
-        <i><span sec:authentication="principal.authorities">Roles</span></i>
+        <b><span sec:authentication="name">Username</span></b>
+        &nbsp;<p>with roles</p>
+        <p><span sec:authentication="principal.authorities">Roles</span></p>
     </div>
 
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Logout"/>
     </form>
 
-    <h1>User Manager</h1>
+    <h1>Admin panel</h1>
     <div sec:authorize="hasAnyAuthority('ADMIN')">
         <a href="/add">Create New User</a>
     </div>
@@ -27,9 +27,11 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>User Name</th>
-            <th>Password</th>
-            <!--            <th>Enabled</th>-->
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <!--            <th>Password</th>-->
             <th>Roles</th>
 
             <th sec:authorize="hasAuthority('ADMIN')">Actions</th>
@@ -39,13 +41,16 @@
         <tbody>
         <tr th:each="user : ${listUsers}">
             <td th:text="${user.id}">ID</td>
-            <td th:text="${user.username}">User Name</td>
-            <td th:text="${user.password}">Password</td>
+            <td th:text="${user.firstname}">First Name</td>
+            <td th:text="${user.lastname}">Last Name</td>
+            <td th:text="${user.age}">Age</td>
+            <td th:text="${user.username}">Email</td>
+            <!--            <td th:text="${user.password}">Password</td>-->
             <td>
-                            <option th:each="role: ${user.roles}"
-                                    th:value="${role.id}"
-                                    th:text="${role.name}" name="roles">
-                            </option>
+                <option th:each="role: ${user.roles}"
+                        th:value="${role.id}"
+                        th:text="${role.name}" name="roles">
+                </option>
             </td>
             <td sec:authorize="hasAuthority('ADMIN')">
                 <!--                <a th:href="@{'/edit/' + ${user.id}}">Edit</a>-->
