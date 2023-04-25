@@ -1,6 +1,5 @@
 package ru.kata.model;
 
-//import org.hibernate.validator.constraints.UniqueElements;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -87,7 +86,6 @@ public class User implements UserDetails {
         }
 
         return authorities;
-//        return getRoles();
     }
 
     public String getPassword() {
