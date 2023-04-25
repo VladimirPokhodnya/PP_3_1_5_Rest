@@ -29,8 +29,8 @@
             <th>ID</th>
             <th>User Name</th>
             <th>Password</th>
-            <th>Enabled</th>
-            <!--				<th>Roles</th>-->
+            <!--            <th>Enabled</th>-->
+            <th>Roles</th>
 
             <th sec:authorize="hasAuthority('ADMIN')">Actions</th>
 
@@ -41,18 +41,21 @@
             <td th:text="${user.id}">ID</td>
             <td th:text="${user.username}">User Name</td>
             <td th:text="${user.password}">Password</td>
-            <td th:text="${user.enabled}">Enabled</td>
-            <!--				<td th:text="${user.roles}">Roles</td>-->
-
+            <td>
+                            <option th:each="role: ${user.roles}"
+                                    th:value="${role.id}"
+                                    th:text="${role.name}" name="roles">
+                            </option>
+            </td>
             <td sec:authorize="hasAuthority('ADMIN')">
-<!--                <a th:href="@{'/edit/' + ${user.id}}">Edit</a>-->
+                <!--                <a th:href="@{'/edit/' + ${user.id}}">Edit</a>-->
                 <form th:action="@{edit/{id}(id=${user.id})}" target="_self">
                     <button>Edit</button>
                 </form>
                 <form th:method="DELETE" th:action="@{delete/{id}(id=${user.id})}" target="_self">
                     <button>Delete</button>
                 </form>
-<!--                <a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/delete/' + ${user.id}}">Delete</a>-->
+                <!--                <a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/delete/' + ${user.id}}">Delete</a>-->
             </td>
         </tr>
         </tbody>

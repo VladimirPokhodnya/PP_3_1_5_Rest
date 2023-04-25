@@ -99,8 +99,9 @@ public class User implements UserDetails {
         this.password = encodedPassword;
     }
 
+    @Override
     public boolean isEnabled() {
-        return enabled;
+        return true;
     }
 
     public void setEnabled(boolean enabled) {
