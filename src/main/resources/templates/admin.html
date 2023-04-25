@@ -46,7 +46,12 @@
 
             <td sec:authorize="hasAuthority('ADMIN')">
                 <a th:href="@{'/edit/' + ${user.id}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
+                <form th:action="@{user-update/{id}(id=${user.id})}" target="_self">
+                    <button>Edit</button>
+                </form>
+                <form th:method="DELETE" th:action="@{delete/{id}(id=${user.id})}" target="_self">
+                    <button>Delete</button>
+                </form>
                 <a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/delete/' + ${user.id}}">Delete</a>
             </td>
         </tr>

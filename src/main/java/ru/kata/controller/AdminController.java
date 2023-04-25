@@ -77,7 +77,7 @@ public class AdminController {
         return "edit_user";
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteUser(@PathVariable(name = "id") Long id) {
         User user = userService.get(id);
         user.setRoles(new HashSet<>());
