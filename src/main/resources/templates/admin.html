@@ -4,14 +4,19 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Admin panel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <div align="center">
-    <div sec:authorize="isAuthenticated()">
-        <b><span sec:authentication="name">Username</span></b>
-        &nbsp;<p>with roles</p>
-        <p><span sec:authentication="principal.authorities">Roles</span></p>
+    <div class="navbar-header">
+        <p th:text="${user.username} + ' with roles: ' + ${user.role}"/>
     </div>
+<!--        <div sec:authorize="isAuthenticated()">-->
+<!--            <b sec:authentication="name" />-->
+<!--            &nbsp;with roles-->
+<!--            <pre sec:authentication="principal.authorities" />-->
+<!--        </div>-->
 
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Logout"/>

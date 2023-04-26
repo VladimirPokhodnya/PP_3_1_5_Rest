@@ -27,4 +27,5 @@ public interface UserService extends UserDetailsService {
     User getAuthUser();
 
     List<Role> getAllRoles();
+
 }

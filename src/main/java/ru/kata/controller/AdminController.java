@@ -31,8 +31,12 @@ public class AdminController {
     @GetMapping("/admin")
     public String viewAdmin(Model model) {
         List<User> listUsers = userService.listAll();
-        model.addAttribute("listUsers", listUsers);
+        User userAuth = userService.getAuthUser();
+        List<Role> allRoles = userService.getAllRoles();
 
+        model.addAttribute("listUsers", listUsers);
+        model.addAttribute("user", userAuth);
+        model.addAttribute("allRoles", allRoles);
         return "admin";
     }
 
