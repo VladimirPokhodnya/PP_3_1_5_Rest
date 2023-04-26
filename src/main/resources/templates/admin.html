@@ -73,13 +73,14 @@
                                         <td th:text="${user.role}"></td>
                                         <td>
                                             <form th:action="@{edit/{id}(id=${user.id})}" target="_self">
-                                                <button>Edit</button>
+                                                <button class="btn btn-info" >Edit</button>
                                             </form>
                                         </td>
                                         <td>
+
                                             <form th:method="DELETE" th:action="@{delete/{id}(id=${user.id})}"
                                                   target="_self">
-                                                <button>Delete</button>
+                                                <button class="btn btn-danger">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
