@@ -70,12 +70,6 @@
                                         <td th:text="${user.lastname}">Last Name</td>
                                         <td th:text="${user.age}">Age</td>
                                         <td th:text="${user.username}">Email</td>
-<!--                                        <td>-->
-<!--                                            <option th:each="role: ${user.roles}"-->
-<!--                                                    th:value="${role.id}"-->
-<!--                                                    th:text="${role.name}" name="roles">-->
-<!--                                            </option>-->
-<!--                                        </td>-->
                                         <td th:text="${user.role}"></td>
                                         <td>
                                             <form th:action="@{edit/{id}(id=${user.id})}" target="_self">
