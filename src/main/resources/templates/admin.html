@@ -11,7 +11,8 @@
 <nav class="navbar navbar-dark bg-dark text-white">
     <div class="container-fluid">
         <div class="navbar-header">
-            <b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/>
+<!--            <b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/>-->
+            <h5><b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/></h5>
         </div>
         <div class="nav navbar-nav navbar-right">
             <a class="nav-link" href="/logout">Logout</a>
@@ -98,7 +99,7 @@
                                         <h5 class="card-header">Add new user</h5>
                                         <div class="card-body text-center">
                                             <div class="form justify-content-center mx-auto col-5">
-                                                <form th:method="POST" th:action="@{/add/}">
+                                                <form th:method="POST" th:action="@{/admin/create/}">
                                                     <div class="form-group">
                                                         <label for="firstname" class="font-weight-bold">First
                                                             name</label>

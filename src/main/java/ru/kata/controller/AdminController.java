@@ -40,6 +40,12 @@ public class AdminController {
         return "admin";
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/create")
+    public String create(@ModelAttribute User user) {
+        userService.saveUser(user);
+        return "redirect:/admin";
+    }
+
     @GetMapping("/add")
     public String showNewUserForm(Model model) {
         User user = new User();
