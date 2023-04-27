@@ -6,10 +6,10 @@ VALUES ('alex', 'Петров', 23, '$2a$10$BzNfvxXD8isfdaQ4qMx1n.4FOHOcKdzIdWQ.
 
 
 INSERT INTO pp314.roles (name)
-VALUES ('USER');
+VALUES ('ADMIN');
 
 INSERT INTO pp314.roles (name)
-VALUES ('ADMIN');
+VALUES ('USER');
 
 INSERT INTO pp314.users_roles (user_id, role_id)
 VALUES (1, 1);
