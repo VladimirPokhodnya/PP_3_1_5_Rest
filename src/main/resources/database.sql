@@ -18,4 +18,4 @@ INSERT INTO pp314.users_roles (user_id, role_id)
 VALUES (1, 2);
 
 INSERT INTO pp314.users_roles (user_id, role_id)
-VALUES (2, 1);
+VALUES (2, 2);
