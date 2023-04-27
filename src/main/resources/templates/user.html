@@ -11,7 +11,8 @@
 <nav class="navbar navbar-dark bg-dark text-white">
     <div class="container-fluid">
         <div class="navbar-header">
-            <b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/>
+<!--            <b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/>-->
+            <h5><b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/></h5>
         </div>
         <div class="nav navbar-nav navbar-right">
             <a class="nav-link" href="/logout">Logout</a>
