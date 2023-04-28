@@ -63,30 +63,36 @@ public class AdminController {
             userRole.add(role);
         }
         user.setRoles(userRole);
-        userService.save(user);
+        userService.saveUser(user);
         return "redirect:/admin";
     }
 
-    @GetMapping("/edit/{id}")
-    public String showEditUserForm(@PathVariable(name = "id") Long id, Model model) {
-        User user = userService.get(id);
-        if (user == null) {
-            return "redirect:/admin";
-        }
-        model.addAttribute("user", user);
-
-        return "edit_user";
-    }
+//    @GetMapping("/edit/{id}")
+//    public String showEditUserForm(@PathVariable(name = "id") Long id, Model model) {
+//        User user = userService.get(id);
+//        if (user == null) {
+//            return "redirect:/admin";
+//        }
+//        model.addAttribute("user", user);
+//
+//        return "edit_user";
+//    }
+//
+//    @PatchMapping("/edit/{id}")
+//    public String updateUser(@ModelAttribute("user") User user, @RequestParam ArrayList<String> listRoleId) {
+//        Set<Role> userRole = user.getRoles();
+//        for (String roleId : listRoleId) {
+//            Role role = roleService.get(Long.parseLong(roleId));
+//            userRole.add(role);
+//        }
+//        user.setRoles(userRole);
+//        userService.save(user);
+//        return "redirect:/admin";
+//    }
 
     @PatchMapping("/edit/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @RequestParam ArrayList<String> listRoleId) {
-        Set<Role> userRole = user.getRoles();
-        for (String roleId : listRoleId) {
-            Role role = roleService.get(Long.parseLong(roleId));
-            userRole.add(role);
-        }
-        user.setRoles(userRole);
-        userService.save(user);
+    public String editUser(@ModelAttribute("usEdit") User user) {
+        userService.updateUser(user);
         return "redirect:/admin";
     }
 

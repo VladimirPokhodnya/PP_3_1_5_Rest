@@ -102,10 +102,11 @@ public class User implements UserDetails {
     }
 
     public void setPassword(String password) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String rawPassword = password;
-        String encodedPassword = encoder.encode(rawPassword);
-        this.password = encodedPassword;
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        String rawPassword = password;
+//        String encodedPassword = encoder.encode(rawPassword);
+//        this.password = encodedPassword;
+        this.password = password;
     }
 
     @Override
