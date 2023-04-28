@@ -11,7 +11,6 @@
 <nav class="navbar navbar-dark bg-dark text-white">
     <div class="container-fluid">
         <div class="navbar-header">
-            <!--            <b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/>-->
             <h5><b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/></h5>
         </div>
         <div class="nav navbar-nav navbar-right">
@@ -28,7 +27,6 @@
                     <a class="nav-link active" href="#adm">Admin</a>
                 </li>
                 <li class="nav-item">
-                    <!--                    //  sec:authorize="hasAnyAuthority('USER')"-->
                     <a class="nav-link" href="/user">User</a>
                 </li>
             </ul>
@@ -73,18 +71,6 @@
                                             <td th:text="${user.age}">Age</td>
                                             <td th:text="${user.username}">Email</td>
                                             <td th:text="${user.role}"></td>
-                                            <!--                                            <td>-->
-                                            <!--                                                <form th:action="@{edit/{id}(id=${user.id})}" target="_self">-->
-                                            <!--                                                    <button class="btn btn-info">Edit</button>-->
-                                            <!--                                                </form>-->
-                                            <!--                                            </td>-->
-                                            <!--                                            <td>-->
-
-                                            <!--                                                <form th:method="DELETE" th:action="@{delete/{id}(id=${user.id})}"-->
-                                            <!--                                                      target="_self">-->
-                                            <!--                                                    <button class="btn btn-danger">Delete</button>-->
-                                            <!--                                                </form>-->
-                                            <!--                                            </td>-->
                                             <td>
                                                 <button th:href="${'#modalEdit' + user.id}" type="button"
                                                         class="btn btn-info" data-toggle="modal">Edit
