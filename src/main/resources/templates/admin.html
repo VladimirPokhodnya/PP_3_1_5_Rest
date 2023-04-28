@@ -237,7 +237,7 @@
     </div>
 </div>
 
-<div th:each="usDelete:${users}">
+<div th:each="usDelete:${listUsers}">
     <div class="modal" th:id="${'modalDelete' + usDelete.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
         <form th:method="GET" th:action="@{/admin/delete/{id}(id =${(usDelete.id)})}">
@@ -259,13 +259,13 @@
 
                         <div class="form-group">
                             <label for="firstnameDelete" class="font-weight-bold">First name</label>
-                            <input type="text" class="form-control" id="firstnameDelete" th:value="${usDelete.name}"
+                            <input type="text" class="form-control" id="firstnameDelete" th:value="${usDelete.firstname}"
                                    readonly="readonly">
                         </div>
 
                         <div class="form-group">
                             <label for="lastnameDelete" class="font-weight-bold">Last name</label>
-                            <input type="text" class="form-control" id="lastnameDelete" th:value="${usDelete.surname}"
+                            <input type="text" class="form-control" id="lastnameDelete" th:value="${usDelete.lastname}"
                                    readonly="readonly">
                         </div>
 
@@ -277,7 +277,7 @@
 
                         <div class="form-group">
                             <label for="emailDelete" class="font-weight-bold">Email</label>
-                            <input type="text" class="form-control" id="emailDelete" th:value="${usDelete.email}"
+                            <input type="text" class="form-control" id="emailDelete" th:value="${usDelete.username}"
                                    readonly="readonly">
                         </div>
 
