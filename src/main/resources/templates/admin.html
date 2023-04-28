@@ -170,7 +170,7 @@
     </div>
 </div>
 
-<div th:each="usEdit:${users}">
+<div th:each="usEdit:${listUsers}">
     <div class="modal" th:id="${'modalEdit' + usEdit.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
         <form th:method="POST" th:action="@{/admin/edit/{id}(id =${(usEdit.id)})}" th:object="${usEdit}">
