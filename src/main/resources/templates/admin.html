@@ -11,7 +11,7 @@
 <nav class="navbar navbar-dark bg-dark text-white">
     <div class="container-fluid">
         <div class="navbar-header">
-<!--            <b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/>-->
+            <!--            <b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/>-->
             <h5><b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/></h5>
         </div>
         <div class="nav navbar-nav navbar-right">
@@ -27,8 +27,8 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="#adm">Admin</a>
                 </li>
-                <li class="nav-item" >
-<!--                    //  sec:authorize="hasAnyAuthority('USER')"-->
+                <li class="nav-item">
+                    <!--                    //  sec:authorize="hasAnyAuthority('USER')"-->
                     <a class="nav-link" href="/user">User</a>
                 </li>
             </ul>
@@ -73,18 +73,18 @@
                                             <td th:text="${user.age}">Age</td>
                                             <td th:text="${user.username}">Email</td>
                                             <td th:text="${user.role}"></td>
-<!--                                            <td>-->
-<!--                                                <form th:action="@{edit/{id}(id=${user.id})}" target="_self">-->
-<!--                                                    <button class="btn btn-info">Edit</button>-->
-<!--                                                </form>-->
-<!--                                            </td>-->
-<!--                                            <td>-->
+                                            <!--                                            <td>-->
+                                            <!--                                                <form th:action="@{edit/{id}(id=${user.id})}" target="_self">-->
+                                            <!--                                                    <button class="btn btn-info">Edit</button>-->
+                                            <!--                                                </form>-->
+                                            <!--                                            </td>-->
+                                            <!--                                            <td>-->
 
-<!--                                                <form th:method="DELETE" th:action="@{delete/{id}(id=${user.id})}"-->
-<!--                                                      target="_self">-->
-<!--                                                    <button class="btn btn-danger">Delete</button>-->
-<!--                                                </form>-->
-<!--                                            </td>-->
+                                            <!--                                                <form th:method="DELETE" th:action="@{delete/{id}(id=${user.id})}"-->
+                                            <!--                                                      target="_self">-->
+                                            <!--                                                    <button class="btn btn-danger">Delete</button>-->
+                                            <!--                                                </form>-->
+                                            <!--                                            </td>-->
                                             <td>
                                                 <button th:href="${'#modalEdit' + user.id}" type="button"
                                                         class="btn btn-info" data-toggle="modal">Edit
@@ -260,7 +260,8 @@
 
                         <div class="form-group">
                             <label for="firstnameDelete" class="font-weight-bold">First name</label>
-                            <input type="text" class="form-control" id="firstnameDelete" th:value="${usDelete.firstname}"
+                            <input type="text" class="form-control" id="firstnameDelete"
+                                   th:value="${usDelete.firstname}"
                                    readonly="readonly">
                         </div>
 
@@ -303,54 +304,6 @@
     </div>
 </div>
 
-<div sec:authorize="hasAnyAuthority('ADMIN')">
-    <a href="/add">Create New User</a>
-</div>
-
-<br/><br/>
-<table border="1" cellpadding="10">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Age</th>
-        <th>Email</th>
-        <!--            <th>Password</th>-->
-        <th>Roles</th>
-
-        <th sec:authorize="hasAuthority('ADMIN')">Actions</th>
-
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${listUsers}">
-        <td th:text="${user.id}">ID</td>
-        <td th:text="${user.firstname}">First Name</td>
-        <td th:text="${user.lastname}">Last Name</td>
-        <td th:text="${user.age}">Age</td>
-        <td th:text="${user.username}">Email</td>
-        <!--            <td th:text="${user.password}">Password</td>-->
-        <td>
-            <option th:each="role: ${user.roles}"
-                    th:value="${role.id}"
-                    th:text="${role.name}" name="roles">
-            </option>
-        </td>
-        <td sec:authorize="hasAuthority('ADMIN')">
-            <!--                <a th:href="@{'/edit/' + ${user.id}}">Edit</a>-->
-            <form th:action="@{edit/{id}(id=${user.id})}" target="_self">
-                <button>Edit</button>
-            </form>
-            <form th:method="DELETE" th:action="@{delete/{id}(id=${user.id})}" target="_self">
-                <button>Delete</button>
-            </form>
-            <!--                <a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/delete/' + ${user.id}}">Delete</a>-->
-        </td>
-    </tr>
-    </tbody>
-</table>
-</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

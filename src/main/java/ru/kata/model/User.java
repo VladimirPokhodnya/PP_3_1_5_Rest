@@ -61,6 +61,7 @@ public class User implements UserDetails {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return String.join(" ", AuthorityUtils.authorityListToSet(getRoles()));
     }
+
     public Long getId() {
         return id;
     }
@@ -102,10 +103,6 @@ public class User implements UserDetails {
     }
 
     public void setPassword(String password) {
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        String rawPassword = password;
-//        String encodedPassword = encoder.encode(rawPassword);
-//        this.password = encodedPassword;
         this.password = password;
     }
 
