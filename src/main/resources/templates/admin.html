@@ -224,6 +224,7 @@
                                         th:text="${role.name}" name="roles">
                                 </option>
                             </select>
+
                         </div>
 
                     </div>
@@ -240,7 +241,7 @@
 <div th:each="usDelete:${listUsers}">
     <div class="modal" th:id="${'modalDelete' + usDelete.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
-        <form th:method="GET" th:action="@{/admin/delete/{id}(id =${(usDelete.id)})}">
+        <form th:method="DELETE" th:action="@{delete/{id}(id =${(usDelete.id)})}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
