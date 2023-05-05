@@ -42,14 +42,14 @@ public class AdminController {
 
     @PostMapping("/create")
     public String create(@ModelAttribute User user) {
-        userService.save(user);
+        userService.saveUser(user);
         return "redirect:/admin";
     }
 
 
-    @PatchMapping("/edit/{id}")
+    @PutMapping("/edit/{id}")
     public String editUser(@ModelAttribute("usEdit") User user) {
-        userService.updateUser(user);
+        userService.saveUser(user);
         return "redirect:/admin";
     }
 

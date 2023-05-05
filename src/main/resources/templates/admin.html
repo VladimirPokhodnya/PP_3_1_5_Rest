@@ -159,7 +159,7 @@
 <div th:each="usEdit:${listUsers}">
     <div class="modal" th:id="${'modalEdit' + usEdit.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
-        <form th:method="patch" th:action="@{edit/{id}(id =${(usEdit.id)})}" th:object="${usEdit}">
+        <form th:method="put" th:action="@{edit/{id}(id =${(usEdit.id)})}" th:object="${usEdit}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
