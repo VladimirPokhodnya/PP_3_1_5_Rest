@@ -40,21 +40,21 @@ public class AdminController {
         return "admin";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/api/users")
     public String create(@ModelAttribute User user) {
         userService.saveUser(user);
         return "redirect:/admin";
     }
 
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/api/users/{id}")
     public String editUser(@ModelAttribute("usEdit") User user) {
         userService.saveUser(user);
         return "redirect:/admin";
     }
 
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/api/users/{id}")
     public String deleteUser(@PathVariable(name = "id") Long id) {
         User user = userService.get(id);
         user.setRoles(new HashSet<>());

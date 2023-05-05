@@ -97,7 +97,7 @@
                                         <h5 class="card-header">Add new user</h5>
                                         <div class="card-body text-center">
                                             <div class="form justify-content-center mx-auto col-5">
-                                                <form th:method="POST" th:action="@{create/}">
+                                                <form th:method="POST" th:action="@{api/users/}">
                                                     <div class="form-group">
                                                         <label for="firstname" class="font-weight-bold">First
                                                             name</label>
@@ -159,7 +159,7 @@
 <div th:each="usEdit:${listUsers}">
     <div class="modal" th:id="${'modalEdit' + usEdit.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
-        <form th:method="put" th:action="@{edit/{id}(id =${(usEdit.id)})}" th:object="${usEdit}">
+        <form th:method="put" th:action="@{api/users/{id}(id =${(usEdit.id)})}" th:object="${usEdit}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -227,7 +227,7 @@
 <div th:each="usDelete:${listUsers}">
     <div class="modal" th:id="${'modalDelete' + usDelete.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
-        <form th:method="DELETE" th:action="@{delete/{id}(id =${(usDelete.id)})}">
+        <form th:method="DELETE" th:action="@{api/users/{id}(id =${(usDelete.id)})}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
